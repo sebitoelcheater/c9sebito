@@ -13,3 +13,16 @@ class AppTest(TestCase):
         
         #assert
         self.assertEquals(200, response.status_code)
+        
+    def test_view(self):
+        '''
+        Check if content view is hola mundo
+        '''
+        #arrange
+        client = Client()
+        
+        #act
+        response = client.get("/hola")
+        
+        #assert
+        self.assertIn("hola mundo", response.content)
